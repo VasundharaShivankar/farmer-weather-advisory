@@ -42,13 +42,13 @@ const AdvancedCharts = ({ forecast }) => {
     const rainPop = forecast.map((item) => (item.pop * 100));
     const pressure = forecast.map((item) => item.main.pressure);
 
-    // Calculate farming suitability score (simplified)
+  
     const farmingSuitability = forecast.map((item) => {
         const temp = item.main.temp;
         const humidity = item.main.humidity;
         const rain = item.pop * 100;
 
-        // Optimal farming conditions: 20-30°C, 40-70% humidity, <30% rain probability
+       
         let score = 100;
         if (temp < 20 || temp > 30) score -= 20;
         if (humidity < 40 || humidity > 70) score -= 15;

@@ -19,7 +19,7 @@ const SearchBar = ({ location, setLocation, fetchWeather, isLoading }) => {
       <button
         onClick={fetchWeather}
         className="search-button"
-        disabled={isLoading || !location.trim()} 
+        disabled={isLoading || !location.trim()}
       >
         {}
         {isLoading ? '🔍 Searching...' : '🔍 Search'}
