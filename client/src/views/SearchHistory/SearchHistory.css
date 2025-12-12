@@ -54,3 +54,11 @@
 .history-sidebar button:hover {
     background-color: #C62828;
 }
+
+.farming-weather-image-history {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

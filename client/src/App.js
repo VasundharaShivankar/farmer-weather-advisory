@@ -26,7 +26,7 @@ function App() {
     <BrowserRouter>
         {/* Header/Banner (Defined in App.css) */}
         <header className="App-header">
-            <h2>GramIQ | Farmer Advisory Tool</h2>
+            <h1 className="app-title">Farmer Advisory Tool</h1>
         </header>
 
         {/* Navigation Bar (Defined in App.css) */}

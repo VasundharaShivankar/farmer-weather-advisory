@@ -1,6 +1,7 @@
 // client/src/components/SearchHistory.js
 import React from "react";
 import { Link } from "react-router-dom";
+import "./SearchHistory.css"; // Import the CSS file
 
 const SearchHistory = ({ onHistoryClick }) => {
     // Read from local storage (synced with Home.js logic)
@@ -10,21 +11,20 @@ const SearchHistory = ({ onHistoryClick }) => {
         localStorage.removeItem('searchHistory');
         window.location.reload(); // Simple way to refresh the list
     };
-    
+
     return (
-        <div style={{ padding: "20px", background: '#f5f5f5', borderRadius: '10px' }}>
-            <h3 style={{ color: "#37474f" }}>Search History</h3>
-            
+        <div className="history-sidebar">
+            <h3>📚 Search History</h3>
+
             {history.length === 0 ? (
-                <p style={{ fontStyle: 'italic' }}>No recent searches found.</p>
+                <p className="no-history">No recent searches found.</p>
             ) : (
-                <ul style={{ listStyleType: 'none', padding: 0 }}>
+                <ul>
                     {history.map((location, index) => (
-                        <li key={index} style={{ margin: '8px 0', borderBottom: '1px dotted #ccc', paddingBottom: '5px' }}>
-                            <Link 
-                                to="#" 
+                        <li key={index}>
+                            <Link
+                                to="#"
                                 onClick={() => onHistoryClick(location)}
-                                style={{ textDecoration: 'none', color: '#00796b', fontWeight: 'bold' }}
                             >
                                 {location}
                             </Link>
@@ -32,19 +32,24 @@ const SearchHistory = ({ onHistoryClick }) => {
                     ))}
                 </ul>
             )}
-            
+
             {history.length > 0 && (
-                 <button 
-                    onClick={handleClearHistory} 
-                    style={{ marginTop: "10px", padding: "5px 10px", background: '#ef9a9a', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+                 <button
+                    onClick={handleClearHistory}
+                    className="clear-button"
                 >
-                    Clear History
+                    🗑️ Clear History
                 </button>
             )}
-            
-            <p style={{ fontSize: '0.8em', marginTop: '15px' }}>
-                *Saves up to 10 locations in your browser.
+
+            <p className="history-note">
+                History of upto 10 locations searched
             </p>
+            <img
+                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                alt="Farming weather advisory"
+                className="farming-weather-image-history"
+            />
         </div>
     );
 };

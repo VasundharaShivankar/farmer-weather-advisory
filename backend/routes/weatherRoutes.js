@@ -3,8 +3,8 @@ const router = express.Router();
 const axios = require('axios');
 const SearchHistory = require('../models/SearchHistory'); // Import the model
 
-// Ensure you set your API key in a .env file (e.g., OPENWEATHER_API_KEY=your_key)
-const API_KEY = process.env.OPENWEATHER_API_KEY;
+// Ensure you set your API key in a .env file (e.g., OPENWEATHER_API=your_key)
+const API_KEY = process.env.OPENWEATHER_API;
 const BASE_URL = 'http://api.openweathermap.org/data/2.5/forecast';
 
 /**

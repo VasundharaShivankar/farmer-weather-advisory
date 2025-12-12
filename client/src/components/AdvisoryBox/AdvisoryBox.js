@@ -1,22 +1,56 @@
 import React from "react";
 import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
 const AdvisoryBox = ({ advisory }) => {
     if (!advisory || advisory.length === 0) return null;
 
-    const downloadPdf = async () => {
-        const input = document.getElementById('advisory-content');
-        if (!input) return;
+    const downloadPdf = () => {
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        let yPosition = 20;
 
-        const canvas = await html2canvas(input, { scale: 2 });
-        const imgData = canvas.toDataURL('image/png');
-        
-        const pdf = new jsPDF('p', 'mm', 'a4'); // 'p' for portrait
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-        
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        // Title
+        pdf.setFontSize(20);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('FARMER WEATHER ADVISORY', 20, yPosition);
+        yPosition += 15;
+
+        // Subtitle
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('Critical insights for your farming decisions', 20, yPosition);
+        yPosition += 20;
+
+        // Advisory items
+        advisory.forEach((item, index) => {
+            const isRisk = item.toLowerCase().includes("avoid") || item.toLowerCase().includes("monitor") || item.toLowerCase().includes("do not");
+            const label = isRisk ? 'WARNING:' : 'ADVICE:';
+
+            // Label
+            pdf.setFontSize(14);
+            pdf.setFont('helvetica', 'bold');
+            pdf.setTextColor(isRisk ? 230 : 46, isRisk ? 81 : 125, isRisk ? 0 : 50); // Orange for risk, green for advice
+            pdf.text(label, 20, yPosition);
+            yPosition += 10;
+
+            // Item text
+            pdf.setFontSize(12);
+            pdf.setFont('helvetica', 'normal');
+            pdf.setTextColor(0, 0, 0); // Black
+
+            // Split long text into lines
+            const lines = pdf.splitTextToSize(item, 170);
+            lines.forEach(line => {
+                if (yPosition > 270) { // Check if we need a new page
+                    pdf.addPage();
+                    yPosition = 20;
+                }
+                pdf.text(line, 20, yPosition);
+                yPosition += 7;
+            });
+
+            yPosition += 10; // Extra space between items
+        });
+
         pdf.save("FarmerAdvisory.pdf");
     };
 
