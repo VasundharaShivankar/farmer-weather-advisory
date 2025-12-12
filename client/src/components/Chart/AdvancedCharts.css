@@ -1,0 +1,238 @@
+/* Advanced Charts Styling - Modern and Professional */
+.advanced-charts-container {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.advanced-charts-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4CAF50, #2196F3, #FF9800, #F44336);
+}
+
+.charts-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.charts-header h3 {
+    color: #2E7D32;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.charts-header p {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Chart Tabs */
+.chart-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.chart-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #f5f5f5;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #666;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.chart-tab:hover {
+    background: #e8f5e8;
+    border-color: #4CAF50;
+    color: #2E7D32;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.chart-tab.active {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border-color: #4CAF50;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.tab-icon {
+    font-size: 1.2rem;
+}
+
+.tab-label {
+    white-space: nowrap;
+}
+
+/* Chart Display */
+.chart-display {
+    height: 400px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Chart Insights */
+.chart-insights {
+    margin-top: 30px;
+}
+
+.insight-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.insight-card h4 {
+    color: #2E7D32;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.insight-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.metric-label {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.metric-value {
+    font-weight: 700;
+    color: #2E7D32;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .advanced-charts-container {
+        padding: 20px;
+        margin: 15px 0;
+    }
+
+    .charts-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .chart-tabs {
+        gap: 6px;
+    }
+
+    .chart-tab {
+        padding: 10px 16px;
+        min-width: 120px;
+        font-size: 0.8rem;
+    }
+
+    .chart-display {
+        height: 300px;
+    }
+
+    .insight-metrics {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .metric {
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .advanced-charts-container {
+        padding: 15px;
+    }
+
+    .chart-tabs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .chart-tab {
+        justify-content: flex-start;
+        min-width: unset;
+    }
+
+    .chart-display {
+        height: 250px;
+    }
+}
+
+/* Loading Animation */
+@keyframes chartFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.advanced-charts-container {
+    animation: chartFadeIn 0.6s ease-out;
+}
+
+/* Custom scrollbar for chart containers */
+.chart-display::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chart-display::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.chart-display::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.chart-display::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

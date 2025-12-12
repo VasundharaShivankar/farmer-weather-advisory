@@ -4,9 +4,12 @@ import React, { useState } from "react";
 import axios from "axios";
 // Imports checked against a standard MERN file structure:
 import SearchBar from "../../components/SearchBar/SearchBar";
+import Dashboard from "../../components/Dashboard/Dashboard";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import AdvisoryBox from "../../components/AdvisoryBox/AdvisoryBox";
-import Chart from "../../components/Chart/Chart";
+import AdvancedCharts from "../../components/Chart/AdvancedCharts";
+import "../../components/Chart/AdvancedCharts.css";
+import "../../components/Dashboard/Dashboard.css";
 // 🚨 POTENTIAL FIX: Adjust path to SearchHistory based on folder structure (assuming views/ or pages/ is where it lives)
 import SearchHistory from "../../views/SearchHistory/SearchHistory"; // ⬅️ Changed path depth
 
@@ -14,10 +17,10 @@ function Home() {
   const [location, setLocation] = useState("");
   const [weather, setWeather] = useState(null);
   const [advisory, setAdvisory] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
 
-  const fetchWeather = async (loc) => { 
-    const searchLocation = loc || location; 
+  const fetchWeather = async (loc) => {
+    const searchLocation = loc || location;
     if (!searchLocation.trim()) return;
 
     setIsLoading(true);
@@ -29,7 +32,7 @@ function Home() {
         setWeather(res.data.data);
         setAdvisory(res.data.advisory);
 
-        // Save to local storage for search history 
+        // Save to local storage for search history
         const history = JSON.parse(localStorage.getItem('searchHistory')) || [];
         if (!history.includes(searchLocation)) {
           history.unshift(searchLocation);
@@ -44,7 +47,7 @@ function Home() {
         setIsLoading(false);
     }
   };
-    
+
   const handleHistoryClick = (histLocation) => {
     setLocation(histLocation);
     fetchWeather(histLocation);
@@ -52,34 +55,34 @@ function Home() {
 
   return (
     // Replaced inline style with "home-container" class
-    <div className="home-container"> 
+    <div className="home-container">
       {/* Keeping inline style here for consistency with the new H1 color from CSS */}
-      <h1 style={{ color: "#2E7D32", marginBottom: "30px" }}>Farmer Weather Advisory Tool</h1> 
+      <h1 style={{ color: "#2E7D32", marginBottom: "30px" }}>🌱 Farmer Weather Advisory Tool</h1>
+
+      {/* Dashboard - Shows quick stats and farming insights */}
+      <Dashboard weather={weather} advisory={advisory} />
 
       {/* Replaced inline style with "content-wrapper" class for main flex layout */}
       <div className="content-wrapper">
-          
+
           {/* Replaced inline style with "main-column" class */}
-          <div className="main-column"> 
+          <div className="main-column">
               <SearchBar
                 location={location}
                 setLocation={setLocation}
                 fetchWeather={() => fetchWeather(location)}
                 isLoading={isLoading}
               />
-          
+
               {/* Replaced inline style with "results-row" class for cards layout */}
               <div className="results-row">
                   <WeatherCard weather={weather} />
                   <AdvisoryBox advisory={advisory} />
               </div>
 
-              {/* Chart (Renders only if weather data is present) */}
+              {/* Advanced Charts (Renders only if weather data is present) */}
               {weather && (
-                // Used the "card-box" utility class and kept inline style for size control
-                <div className="card-box" style={{ width: '100%', maxWidth: '800px', margin: '20px 0' }}> 
-                    <Chart forecast={weather.list.slice(0, 10)} />
-                </div>
+                <AdvancedCharts forecast={weather.list.slice(0, 10)} />
               )}
           </div>
 

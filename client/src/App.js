@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom"; 
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 // Updated imports based on your component locations:
 import Home from "./views/Home/Home";
 import SearchHistory from "./views/SearchHistory/SearchHistory";
+import './App.css';
 
 // Helper component to apply 'active' class to the current link
 const NavLink = ({ to, children }) => {
