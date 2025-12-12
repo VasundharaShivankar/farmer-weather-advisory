@@ -17,11 +17,12 @@
     position: relative;
     display: flex;
     align-items: center;
+    margin-left: 100px;
 }
 
 .location-input {
     padding: 20px 50px 20px 20px;
-    width: 100%;
+    width: 700px;
     max-width: 400px; /* Even larger width for better usability */
     border: 3px solid #E8F5E8; /* Slightly thicker border */
     border-radius: 30px;

@@ -1,9 +1,9 @@
 import React from "react";
 
-// Added 'isLoading' prop for better user experience
+
 const SearchBar = ({ location, setLocation, fetchWeather, isLoading }) => {
   return (
-    // 1. Replaced inline style with the "search-container" class
+   
     <div className="search-container">
       <div className="input-wrapper">
         <input
@@ -12,16 +12,16 @@ const SearchBar = ({ location, setLocation, fetchWeather, isLoading }) => {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           className="location-input"
-          disabled={isLoading} // Disable while loading
+          disabled={isLoading} 
         />
         <span className="input-icon">📍</span>
       </div>
       <button
         onClick={fetchWeather}
         className="search-button"
-        disabled={isLoading || !location.trim()} // Disable if loading or input is empty
+        disabled={isLoading || !location.trim()} 
       >
-        {/* Added text change for feedback */}
+        {}
         {isLoading ? '🔍 Searching...' : '🔍 Search'}
       </button>
       <img

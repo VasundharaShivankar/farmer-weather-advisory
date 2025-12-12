@@ -1,13 +1,15 @@
-/* Search History Sidebar (Should look like a rustic logbook) */
+dv/* Search History Sidebar (Should look like a rustic logbook) */
 .history-sidebar {
     width: 300px;
     flex-shrink: 0;
-    background-color: #FEFBEA; /* Yellowish Cream */
+    background-color: #3c3b35; /* Yellowish Cream */
     border-radius: 12px;
+    margin-left: 350px;
     padding: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border: 2px solid #BCAAA4; /* Faint brown border */
-    min-height: 400px; /* Ensure it stands out */
+    max-height: 600px; /* Limit the height to prevent extending full webpage */
+    overflow-y: auto; /* Add scroll if content exceeds max-height */
 }
 
 .history-sidebar h3 {
