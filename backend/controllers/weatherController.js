@@ -35,6 +35,8 @@ exports.getWeatherData = async (req, res) => {
     const { location } = req.body;
 
     const keyDoc = await ApiKey.findOne({ service: "openweather" });
+console.log("MongoDB returned keyDoc:", keyDoc);
+
     const apiKey = keyDoc.key;
 
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`;
@@ -43,6 +45,7 @@ exports.getWeatherData = async (req, res) => {
     const data = response.data;
 
     const advisory = generateAdvisory(data.list);
+    console.log("API KEY FROM DB:", apiKey);
 
     await SearchHistory.create({
       location,

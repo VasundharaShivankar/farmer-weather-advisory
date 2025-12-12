@@ -1,0 +1,3 @@
+- [x] Create Home.js page
+- [x] Create SearchHistory.js page
+- [x] Update App.js for routing
