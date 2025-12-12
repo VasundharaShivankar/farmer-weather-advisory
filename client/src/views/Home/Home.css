@@ -1,0 +1,110 @@
+/* Prevent any unwanted scrolling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.info-section {
+  width: 100%;
+  max-width: 1300px;         /* Centers content and avoids overflow */
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Card */
+.info-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 2rem;
+  border-radius: 20px;
+  background: #fff;
+  border-left: 6px solid #2b7a3d;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  overflow: hidden;          /* Prevents content leaking and shifting */
+}
+
+/* Hover effect */
+.info-row:hover {
+  transform: translateY(-4px);
+}
+
+/* Image */
+.info-image {
+  width: 40%;
+  max-width: 500px;
+  height: auto;
+  aspect-ratio: 4/3;         /* Ensures stable image size */
+  border-radius: 16px;
+  object-fit: cover;
+  flex-shrink: 0;            /* Prevents shrinking & shifting */
+}
+
+/* Text */
+.info-text {
+  width: 60%;
+  min-width: 260px;
+}
+
+.info-text h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.7rem;
+  color: #1f5a2e;
+}
+
+.info-text p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Reverse layout */
+.right-image {
+  flex-direction: row-reverse;
+}
+
+/* Tablet-responsiveness */
+@media (max-width: 900px) {
+  .info-row {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.8rem;
+  }
+
+  .info-image {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16/9;
+  }
+
+  .info-text {
+    width: 100%;
+  }
+}
+
+/* Mobile-responsiveness */
+@media (max-width: 600px) {
+  .info-section {
+    padding: 1rem;
+  }
+
+  .info-row {
+    gap: 1.2rem;
+    padding: 1.5rem;
+  }
+
+  .info-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .info-text p {
+    font-size: 0.95rem;
+  }
+}

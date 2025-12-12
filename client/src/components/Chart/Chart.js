@@ -1,4 +1,4 @@
-// client/src/components/Chart.js
+
 import React from "react";
 import { Line } from "react-chartjs-2";
 import { 
@@ -12,21 +12,21 @@ import {
     Legend 
 } from "chart.js";
 
-// Must register all chart elements
+
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Title, Tooltip, Legend);
 
 const Chart = ({ forecast }) => {
     if (!forecast || forecast.length === 0) return null;
 
-    // Prepare Data for two datasets
+   
     const labels = forecast.map((item) => {
         const date = new Date(item.dt_txt);
-        // Display Day of week and time
+     
         return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', weekday: 'short' });
     });
     
     const temperatures = forecast.map((item) => item.main.temp);
-    // POP is a percentage probability (0 to 1), map to 0 to 100
+
     const rainPop = forecast.map((item) => (item.pop * 100).toFixed(0)); 
 
     const data = {
@@ -35,7 +35,7 @@ const Chart = ({ forecast }) => {
             {
                 label: "Temperature (°C)",
                 data: temperatures,
-                borderColor: "#ef5350", // Red line
+                borderColor: "#ef5350", 
                 backgroundColor: "rgba(239, 83, 80, 0.1)",
                 tension: 0.4,
                 yAxisID: 'yTemp',
@@ -43,7 +43,7 @@ const Chart = ({ forecast }) => {
             {
                 label: "Rain Probability (POP %)",
                 data: rainPop,
-                borderColor: "#42a5f5", // Blue line
+                borderColor: "#42a5f5",
                 backgroundColor: "rgba(66, 165, 245, 0.1)",
                 tension: 0.4,
                 yAxisID: 'yPop',

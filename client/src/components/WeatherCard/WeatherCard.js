@@ -46,12 +46,11 @@ const WeatherCard = ({ weather }) => {
   return (
     <div className="card-box weather-card" style={{ width: "380px", flexShrink: 0 }}>
 
-      {/* Enhanced Header */}
+      
       <div className="weather-header">
         <h3>🌤️ Weather in {cityName}</h3>
       </div>
 
-      {/* Main Weather Display */}
       <div className="weather-main">
         <div className="weather-icon-large">
           {getWeatherIcon(current.weather[0].main)}
@@ -61,7 +60,6 @@ const WeatherCard = ({ weather }) => {
         </div>
       </div>
 
-      {/* Farmer Metrics Grid */}
       <div className="farmer-metrics">
         <div className="metric-item">
           <div className="metric-icon">☀️</div>
@@ -96,7 +94,6 @@ const WeatherCard = ({ weather }) => {
         </div>
       </div>
 
-      {/* Extended Weather Details */}
       <div className="weather-details-extended">
         <div className="detail-row">
           <span>Condition:</span>
@@ -116,7 +113,6 @@ const WeatherCard = ({ weather }) => {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="weather-footer">
         <small>Next 3 hours forecast</small>
       </div>

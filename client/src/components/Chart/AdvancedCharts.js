@@ -30,7 +30,7 @@ const AdvancedCharts = ({ forecast }) => {
 
     if (!forecast || forecast.length === 0) return null;
 
-    // Prepare data for different charts
+    
     const labels = forecast.map((item) => {
         const date = new Date(item.dt_txt);
         return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', weekday: 'short' });
