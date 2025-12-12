@@ -1,0 +1,42 @@
+/* Search Bar Styling (The input field should feel like a sturdy notebook or tool) */
+.search-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.search-container input {
+    padding: 14px;
+    border: 2px solid #BCAAA4; /* Faint brown border */
+    border-radius: 8px;
+    width: 380px;
+    font-size: 16px;
+    background-color: #FFFDE7; /* Off-white, like paper */
+    transition: border-color 0.2s;
+}
+
+.search-container input:focus {
+    border-color: #6D4C41; 
+    outline: none;
+    box-shadow: 0 0 5px rgba(109, 76, 65, 0.5);
+}
+
+.search-container button {
+    padding: 14px 30px;
+    background-color: #FFA000; /* Amber/Orange: Sun/Harvest color */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px #FF8F00; /* 3D effect */
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.search-container button:hover:not(:disabled) {
+    background-color: #FF8F00;
+    transform: translateY(1px);
+    box-shadow: 0 3px #FF6F00;
+}

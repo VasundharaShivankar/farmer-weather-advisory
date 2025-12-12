@@ -1,38 +1,124 @@
-.App {
-  text-align: center;
+/* client/src/App.css (or index.css) */
+
+/* --- Global Reset & Typography --- */
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fcf9; /* Very light, clean background */
+    margin: 0;
+    padding: 0;
+    color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/* --- App Header: Sky and Earth Theme --- */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #388E3C; /* Deep Forest Green */
+    color: white;
+    padding: 25px 40px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Strong shadow */
+    margin-bottom: 25px;
+    /* Adding a subtle texture or pattern is an option here */
+    background-image: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+}
+.App-header h2 {
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+    color: #004d40; /* Primary Green for main titles */
+    font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* --- Navigation --- */
+nav {
+    background-color: #ECEFF1; /* Light gray base */
+    border-bottom: 3px solid #6D4C41; /* Brown earth line */
+    padding: 10px 40px;
+    margin-bottom: 20px;
+}
+nav a {
+    text-decoration: none;
+    color: #6D4C41; /* Earth Brown */
+    font-weight: 600;
+    margin-right: 30px;
+    padding: 8px 0;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+nav a:hover, nav a.active {
+    color: #2E7D32; /* Richer Green */
+    border-bottom: 3px solid #2E7D32;
+}
+
+/* --- Home Page Layout --- */
+.home-container {
+    padding: 0 40px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    /* Ensure content is centered if less than max-width */
+    max-width: 1280px; 
+    margin: 0 auto;
+}
+
+/* --- Results Section Layout --- */
+.results-row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
+    flex-wrap: wrap; 
+}
+
+/* --- Utility: Card Style (Relating to a wooden sign or fertile ground) --- */
+.card-box {
+    background-color: white;
+    border-radius: 12px; /* Smoother corners */
+    padding: 30px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Prominent shadow */
+    border: 1px solid #C8E6C9; /* Light green border */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+.card-box:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+/* --- Weather Card Specific Styles --- */
+.weather-card h3 {
+    font-size: 1.2rem;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #C8E6C9;
+}
+
+.weather-summary {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.weather-icon {
+    font-size: 60px; /* Large, prominent icon */
+    margin-right: 25px;
+}
+
+.weather-temp {
+    font-size: 56px; /* Very large temperature */
+    font-weight: 300;
+    color: #5D4037; /* Earth Brown for data prominence */
+    line-height: 1;
+}
+
+.weather-details {
+    padding-top: 15px;
+    border-top: 2px dashed #E0E0E0; /* Subtle divider */
+    font-size: 0.95rem;
+}
+
+.weather-details p {
+    margin: 8px 0;
+}
+
+.weather-metric-small {
+    font-size: 0.8rem;
+    color: #999;
 }

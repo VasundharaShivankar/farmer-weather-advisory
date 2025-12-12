@@ -1,22 +1,47 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import SearchHistory from "./pages/SearchHistory";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom"; 
+// Updated imports based on your component locations:
+import Home from "./views/Home/Home";
+import SearchHistory from "./views/SearchHistory/SearchHistory";
+
+// Helper component to apply 'active' class to the current link
+const NavLink = ({ to, children }) => {
+    const location = useLocation();
+    const isActive = location.pathname === to;
+    
+    return (
+        <Link 
+            to={to} 
+            // Use the "active" class defined in your CSS
+            className={isActive ? 'active' : ''} 
+        >
+            {children}
+        </Link>
+    );
+};
 
 function App() {
   return (
-    <Router>
-      <div style={{ padding: "20px" }}>
+    <BrowserRouter>
+        {/* Header/Banner (Defined in App.css) */}
+        <header className="App-header">
+            <h2>GramIQ | Farmer Advisory Tool</h2>
+        </header>
+
+        {/* Navigation Bar (Defined in App.css) */}
         <nav>
-          <Link to="/" style={{ marginRight: "20px" }}>Home</Link>
-          <Link to="/search-history">Search History</Link>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/search-history">Search History</NavLink>
         </nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/search-history" element={<SearchHistory />} />
-        </Routes>
-      </div>
-    </Router>
+      
+        {/* Main Application Content Area */}
+        <div className="app-main-content">
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/search-history" element={<SearchHistory />} />
+            </Routes>
+        </div>
+    </BrowserRouter>
   );
 }
 

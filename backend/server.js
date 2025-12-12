@@ -1,27 +1,31 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-
-const weatherRoutes = require("./routes/weather");
+require('dotenv').config(); // Load environment variables from .env
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const weatherRoutes = require('./routes/weatherRoutes'); // Import the routes
 
 const app = express();
-app.use(cors());
-app.use(express.json());
-
-// MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI;
-
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log("DB Error:", err));
-
-// Routes
-app.use("/api/weather", weatherRoutes);
-
-app.get("/", (req, res) => {
-  res.send({ message: "Backend Running Successfully" });
-});
-
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const MONGO_URI = process.env.MONGODB_URI; // ⬅️ FIX: Use MONGODB_URI
+
+// --- Middleware ---
+app.use(cors()); // Enable CORS for frontend connection
+app.use(express.json()); // Body parser for application/json
+
+// --- Routes ---
+// All requests to /api go to weatherRoutes
+app.use('/api', weatherRoutes); 
+
+// --- MongoDB Connection ---
+mongoose.connect(MONGO_URI)
+    .then(() => {
+        console.log('MongoDB successfully connected.');
+        
+        // Start server only after successful DB connection
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    })
+    .catch(err => {
+        console.error('MongoDB connection error:', err);
+    });
