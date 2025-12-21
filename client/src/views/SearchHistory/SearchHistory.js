@@ -1,15 +1,15 @@
-// client/src/components/SearchHistory.js
+
 import React from "react";
 import { Link } from "react-router-dom";
-import "./SearchHistory.css"; // Import the CSS file
+import "./SearchHistory.css"; 
 
 const SearchHistory = ({ onHistoryClick }) => {
-    // Read from local storage (synced with Home.js logic)
+    
     const history = JSON.parse(localStorage.getItem('searchHistory')) || [];
 
     const handleClearHistory = () => {
         localStorage.removeItem('searchHistory');
-        window.location.reload(); // Simple way to refresh the list
+        window.location.reload();
     };
 
     return (

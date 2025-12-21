@@ -70,7 +70,7 @@ const Chart = ({ forecast }) => {
                 display: true,
                 position: 'right',
                 title: { display: true, text: 'Rain Probability (%)' },
-                grid: { drawOnChartArea: false }, // Prevent overlap with left axis grid
+                grid: { drawOnChartArea: false }, 
                 min: 0,
                 max: 100,
             },

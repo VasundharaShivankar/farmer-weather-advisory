@@ -1,4 +1,4 @@
-/* Prevent any unwanted scrolling */
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +7,7 @@
 
 .info-section {
   width: 100%;
-  max-width: 1300px;         /* Centers content and avoids overflow */
+  max-width: 1300px;        
   margin: 0 auto;
   padding: 2rem 1.5rem;
   display: flex;
@@ -15,7 +15,7 @@
   gap: 3rem;
 }
 
-/* Card */
+
 .info-row {
   width: 100%;
   display: flex;
@@ -28,26 +28,26 @@
   border-left: 6px solid #2b7a3d;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  overflow: hidden;          /* Prevents content leaking and shifting */
+  overflow: hidden;          
 }
 
-/* Hover effect */
+
 .info-row:hover {
   transform: translateY(-4px);
 }
 
-/* Image */
+
 .info-image {
   width: 40%;
   max-width: 500px;
   height: auto;
-  aspect-ratio: 4/3;         /* Ensures stable image size */
+  aspect-ratio: 4/3;         
   border-radius: 16px;
   object-fit: cover;
-  flex-shrink: 0;            /* Prevents shrinking & shifting */
+  flex-shrink: 0;            
 }
 
-/* Text */
+
 .info-text {
   width: 60%;
   min-width: 260px;
@@ -65,12 +65,12 @@
   color: #444;
 }
 
-/* Reverse layout */
+
 .right-image {
   flex-direction: row-reverse;
 }
 
-/* Tablet-responsiveness */
+
 @media (max-width: 900px) {
   .info-row {
     flex-direction: column;
@@ -89,7 +89,7 @@
   }
 }
 
-/* Mobile-responsiveness */
+
 @media (max-width: 600px) {
   .info-section {
     padding: 1rem;

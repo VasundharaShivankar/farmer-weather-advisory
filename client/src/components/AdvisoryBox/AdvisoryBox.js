@@ -40,7 +40,7 @@ const AdvisoryBox = ({ advisory }) => {
             // Split long text into lines
             const lines = pdf.splitTextToSize(item, 170);
             lines.forEach(line => {
-                if (yPosition > 270) { // Check if we need a new page
+                if (yPosition > 270) { 
                     pdf.addPage();
                     yPosition = 20;
                 }
@@ -48,7 +48,7 @@ const AdvisoryBox = ({ advisory }) => {
                 yPosition += 7;
             });
 
-            yPosition += 10; // Extra space between items
+            yPosition += 10; 
         });
 
         // Additional Recommendations Section

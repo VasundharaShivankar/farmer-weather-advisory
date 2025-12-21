@@ -8,7 +8,7 @@ const WeatherCard = ({ weather }) => {
   const temp = Math.round(current.main.temp);
   const description = current.weather[0].description;
 
-  // Enhanced icon map for farmer-friendly look
+
   const getWeatherIcon = (main) => {
     switch (main) {
       case 'Rain': return '🌧️';
@@ -21,7 +21,7 @@ const WeatherCard = ({ weather }) => {
     }
   };
 
-  // Calculate UV Index (simplified based on temperature and cloud cover)
+ 
   const calculateUVIndex = () => {
     const temp = current.main.temp;
     const clouds = current.clouds?.all || 0;
@@ -29,7 +29,7 @@ const WeatherCard = ({ weather }) => {
     return Math.round(uvIndex);
   };
 
-  // Estimate soil moisture based on humidity and rain probability
+  
   const getSoilMoisture = () => {
     const humidity = current.main.humidity;
     const rainProb = current.pop * 100;

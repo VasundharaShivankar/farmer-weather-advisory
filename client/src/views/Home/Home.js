@@ -1,9 +1,9 @@
-// client/src/pages/Home.js
+
 
 import React, { useState } from "react";
 import axios from "axios";
 import "./Home.css"
-// Imports checked against a standard MERN file structure:
+
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
@@ -11,8 +11,8 @@ import AdvisoryBox from "../../components/AdvisoryBox/AdvisoryBox";
 import AdvancedCharts from "../../components/Chart/AdvancedCharts";
 import "../../components/Chart/AdvancedCharts.css";
 import "../../components/Dashboard/Dashboard.css";
-// 🚨 POTENTIAL FIX: Adjust path to SearchHistory based on folder structure (assuming views/ or pages/ is where it lives)
-import SearchHistory from "../../views/SearchHistory/SearchHistory"; // ⬅️ Changed path depth
+
+import SearchHistory from "../../views/SearchHistory/SearchHistory"; 
 import farmImage from './farm.jpg';
 import farmWeatherImage from './farm_weather_image.jpg';
 
@@ -33,9 +33,7 @@ function Home() {
         });
 
         setWeather(res.data.data);
-        setAdvisory(res.data.advisory);
-
-        // Save to local storage for search history
+        setAdvisory(res.data.advisory);  
         const history = JSON.parse(localStorage.getItem('searchHistory')) || [];
         if (!history.includes(searchLocation)) {
           history.unshift(searchLocation);
@@ -44,7 +42,7 @@ function Home() {
     } catch (error) {
         console.error("Error fetching weather data:", error);
         alert("Error fetching data. Check your backend and server logs.");
-        setWeather(null); // Clear weather on error
+        setWeather(null); 
         setAdvisory([]);
     } finally {
         setIsLoading(false);
@@ -57,7 +55,7 @@ function Home() {
   };
 
   return (
-    // Replaced inline style with "home-container" class
+   
     <div className="home-container">
       {/* Keeping inline style here for consistency with the new H1 color from CSS */}
       <h1 style={{ color: "#2E7D32", marginBottom: "30px" }}>🌱 Farmer Weather Advisory Tool</h1>

@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
-// Updated imports based on your component locations:
+
 import Home from "./views/Home/Home";
 import SearchHistory from "./views/SearchHistory/SearchHistory";
 import './App.css';
 
-// Helper component to apply 'active' class to the current link
+
 const NavLink = ({ to, children }) => {
     const location = useLocation();
     const isActive = location.pathname === to;
@@ -13,7 +13,7 @@ const NavLink = ({ to, children }) => {
     return (
         <Link 
             to={to} 
-            // Use the "active" class defined in your CSS
+
             className={isActive ? 'active' : ''} 
         >
             {children}
